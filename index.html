@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Video insertado — YouTube embed</title>
+  <style>
+    /* Contenedor responsive 16:9 compatible con navegadores modernos.
+       También incluye fallback con padding-top para compatibilidad. */
+    .video-wrapper {
+      max-width: 1000px;
+      margin: 32px auto;
+      /* usa aspect-ratio si está disponible */
+      aspect-ratio: 16 / 9;
+      background: #000;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.25);
+    }
+
+    /* Fallback para navegadores que no soporten aspect-ratio */
+    @supports not (aspect-ratio: 16/9) {
+      .video-wrapper {
+        position: relative;
+        height: 0;
+        padding-top: 56.25%; /* 9/16 = 56.25% */
+      }
+      .video-wrapper iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+      }
+    }
+
+    .video-wrapper iframe {
+      width: 100%;
+      height: 100%;
+      border: 0;
+      display: block;
+    }
+
+    .container {
+      padding: 0 16px;
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      color: #111;
+    }
+
+    .caption {
+      max-width: 1000px;
+      margin: 12px auto;
+      font-size: 0.95rem;
+      color: #444;
+      text-align: center;
+    }
+
+    .btn-youtube {
+      display: inline-block;
+      margin-top: 8px;
+      padding: 8px 12px;
+      text-decoration: none;
+      border-radius: 8px;
+      border: 1px solid #e5e5e5;
+      background: white;
+      color: inherit;
+      font-weight: 600;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1 style="text-align:center">Video insertado</h1>
+
+    <div class="video-wrapper" aria-label="Reproductor de YouTube">
+      <!--
+        ID del video: DXd8x5sFagM
+        Start = 510 segundos -> ?start=510
+        Usamos youtube-nocookie.com por privacidad
+        loading="lazy" para mejorar rendimiento
+      -->
+      <iframe
+        src="https://www.youtube-nocookie.com/embed/DXd8x5sFagM?start=510"
+        title="YouTube video player"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        allowfullscreen
+        loading="lazy"></iframe>
+    </div>
+
+    <p class="caption">
+      Empieza en 510s (8m30s). <br />
+      <a class="btn-youtube" href="https://www.youtube.com/watch?v=DXd8x5sFagM&t=510s" target="_blank" rel="noopener noreferrer">
+        Abrir en YouTube
+      </a>
+    </p>
+  </div>
+</body>
+</html>
